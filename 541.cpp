@@ -1,47 +1,33 @@
-// 344. Reverse String
-// Write a function that reverses a string. The input string is given as an
-// array of characters char[].
-// Do not allocate extra space for another array, you must do this by modifying
-// the input array in-place with O(1) extra memory.
-// You may assume all the characters consist of printable ascii characters.
+// 541. Reverse String II
+// Given a s s and an integer k, reverse the first k characters for every
+// 2k characters counting from the start of the s.
+// If there are fewer than k characters left, reverse all of them. If there are
+// less than 2k but greater than or equal to k characters, then reverse the
+// first k characters and left the other as original.
 
 #include <bits/stdc++.h>
 
 using namespace std;
 
-void reverseString(vector<char>& s) {
-  if (s.size() <= 1) {
+string reverseString(string s, int k) {
+  vector<char> vec(s, s + s.length());
+  vector<char> rev(s, s.length() + k);
+  
+  if (rev.size() <= 1) {
     return;
   }
   int head = 0;
-  int tail = s.size() - 1;
+  int tail = rev.size() - 1;
 
   while (head < tail) {
-    swap(s[head++], s[tail--]);
+    swap(rev[head++], rev[tail--]);
   }
-}
-
-int main() {
-  char str[] = "abcdefg";
-  int k = 2;
-  
-
-  for (int i = 0; i < strlen(str); i++) {
-    cout << str[i];
-  }
-  cout << endl;
-
-  vector<char> vec(str, str + strlen(str));
-  vector<char> rev(str, str + k);
-  
-  reverseString(rev);
 
   for (int i = 0; i < vec.size(); i++) {
     if (i < k) {
       auto it = vec.begin();
       vec.erase(it);   
     }
-    // cout << vec[i];
   }
   rev.insert(rev.end(), vec.begin(), vec.end());
 
@@ -49,4 +35,12 @@ int main() {
     cout << rev[i];
   }
   cout << endl;
+
+  return rev;
+}
+
+int main() {
+  string str = "abcdefg";
+
+  reverseString(str, 4);
 }
