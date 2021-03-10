@@ -50,5 +50,5 @@ int main() {
   root->right->left = CreateNode(15);
   root->right->right = CreateNode(7);
 
-  cout << "Height of tree is " << minDepth(root);
+  cout << "Depth of tree is " << minDepth(root);
 }
