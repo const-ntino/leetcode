@@ -1,4 +1,5 @@
-
+class Solution {
+  public:
    int prev = INT_MIN, atual = 1, max = 0;
 
    void inOrder(TreeNode* root, vector<int>& resposta) {
@@ -30,4 +31,4 @@
      inOrder(root, resposta);
      return resposta;
    }
-
+ };
